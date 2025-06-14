@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   filterCards(); // Initial filter
 });
 
-
-
-
+function toggleMobileFilters(){
+  const panel = document.getElementById("mobileFilters");
+  panel.classList.toggle('open');
+}
