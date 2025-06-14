@@ -7,6 +7,7 @@ html, body{
   overflow-x: hidden;
 }
 body{
+    padding-top: 50px;
     font-family: Arial, sans-serif;
     background-color: #051128;
 }
@@ -17,7 +18,10 @@ nav a {
 }
 .nav{
   background: linear-gradient(90deg, #3b1d7d 0%, #091437 100%);
-  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
   z-index: 1000;
   height: 50px;
   
@@ -112,14 +116,32 @@ a.active, a:hover{
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.6);
   z-index: 0;
 }
+.background-section{
+  position: relative;
+  padding: 20px 20px;
+  margin-top: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('car.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  color: white;
+}
+
 h1 {
   text-align: center;
   color: white;
   font-size: 50px;
-  margin-top: 320px
+  margin-top: 100px;
+  position: relative;
+  z-index: 1;
 }
 .types-title {
   text-align: center;
@@ -341,4 +363,46 @@ h1 {
 input[type="range"] {
   width: 100%;
   margin-top: 10px;
+}
+
+.mobile-filter-toggle {
+  display: none;
+}
+
+.mobile-filters {
+  position: fixed;
+  top: 60px;
+  left: 10px;
+  right: 10px;
+  z-index: 1100;
+  max-height: 80vh;
+  display: none;
+  background: white;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  overflow-y: auto;
+}
+
+/* Show only on small screen */
+@media (max-width: 768px) {
+  .mobile-filter-toggle {
+    display: block;
+    margin: 15px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+  }
+
+  .left {
+    display: none;
+  }
+
+  .mobile-filters.open {
+    display: block;
+  }
 }
