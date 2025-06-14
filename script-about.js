@@ -1,19 +1,15 @@
-  const navLinks = document.querySelectorAll('.contents a');
-  const sections = document.querySelectorAll('.article h2[id]');
+document.querySelectorAll('.contents a').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const target = document.getElementById(targetId);
+    const yOffset = -80; // Match your navbar height
 
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 150;
-      if (pageYOffset >= sectionTop) {
-        current = section.getAttribute('id');
-      }
-    });
+    const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href').includes(current)) {
-        link.classList.add('active');
-      }
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth'
     });
   });
+});
